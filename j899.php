@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: J899
- * Plugin URI: https://julio899.github.io/2019/
+ * Plugin URI: https://github.com/julio899/j899PluginWP
  * Description: Una pruba de pluging de wordpress hecha por Julio Vinachi.
  * Version: 0.0.1
  * Author: Julio Vinachi
