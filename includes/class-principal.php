@@ -54,6 +54,14 @@ class Principal
         add_action( 'switch_blog', array( $this, 'wpdb_table_fix' ), 0 );
          */
 
+        add_action( 'init', array( $this, 'instalar' ) );       
+    }
+
+    public function instalar()
+    {
+    	include_once 'class-instalacion.php';
+    	new Instalacion();
+        define('J899_LIC', Instalacion::lic());
     }
 
     public function activated_plugin()
