@@ -21,6 +21,21 @@ class Principal
         $this->init_hooks();
     }
 
+    public function woocomerceExist()
+    {
+	 	$wcExist = false;  	
+		$plugins_actives = get_option( 'active_plugins' );
+		
+		foreach ($plugins_actives as $key => $value)
+		{
+			if ( explode($value,'woocommerce')[0] == 'woocommerce' )
+			{
+				$wcExist = true;
+			}			
+		}
+		return $wcExist;		
+    }
+
     public function includes()
     {
         if ($this->is_request('admin')) {
@@ -54,7 +69,12 @@ class Principal
         add_action( 'switch_blog', array( $this, 'wpdb_table_fix' ), 0 );
          */
 
-        add_action( 'init', array( $this, 'instalar' ) );       
+        if( $this->woocomerceExist() )
+        {
+        	// # verifico si woocomerce esta instalado continuo con la instalacion
+        	add_action( 'init', array( $this, 'instalar' ) );       
+        }
+
     }
 
     public function instalar()
@@ -87,6 +107,7 @@ class Principal
         define( 'J899_DIR', dirname(__FILE__).'/' );
         define('J899_LOG_DIR', $upload_dir['basedir'] . '/wc-logs/');
         define('J899_VERSION', $this->version);
+        define('J899_WC',$this->woocomerceExist());
     }
 
     public static function instance()

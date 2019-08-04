@@ -37,26 +37,8 @@ class Submenu {
      * Adds a submenu for this plugin to the 'Tools' menu.
      */
     public function init() {
-        add_action( 'admin_menu', array( $this, 'add_options_page' ) );
-		
-      	//add_submenu_page( 'woocommerce','J899','J899', 'view_woocommerce_reports', 'custom-admin-page', array( $this, 'add_options_page2' ) );
-		
-
-/*
-add_submenu_page( 
-	string $parent_slug, 
-	string $page_title, 
-	string $menu_title, 
-	string $capability, 
-	string $menu_slug, 
-	callable $function = '' )
-*/
-    }
-    public function add_options_page2(){
-    	?>
-			<h1>Test Probano</h1>
-    	<?php
-    }
+        add_action( 'admin_menu', array( $this, 'add_options_page' ) );		
+	}
  
     /**
      * Creates the submenu item and calls on the Submenu Page object to render

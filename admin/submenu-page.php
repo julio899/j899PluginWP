@@ -21,9 +21,14 @@ class Submenu_Page {
      * Submenu class.
      */
     public function render() {
-        require_once( J899_DIR . 'views/settings.php');
+    	if(is_plugin_active('woocommerce/woocommerce.php'))
+    	{
+        	require_once( J899_DIR . 'views/settings.php');
+    	}else{
+        	require_once( J899_DIR . 'views/sorry.php');
+    	}
     }
     public function renderWoocomerce() {
-        echo 'Welcome to J899 V' .J899_VERSION. ' This is the renderWoocomerce. '.J899_DIR ;
+        echo 'Bienvenido a J899 V' .J899_VERSION. ' este es el render dentro de Woocomerce. '.J899_DIR ;
     }
 }

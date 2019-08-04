@@ -2,7 +2,7 @@
 /**
  * Plugin Name: J899
  * Plugin URI: https://github.com/julio899/j899PluginWP
- * Description: Una pruba de pluging de wordpress hecha por Julio Vinachi.
+ * Description:  Plugin reaizado por Julio Vinachi depende de Woocommerce.
  * Version: 0.0.1
  * Author: Julio Vinachi
  * Author URI: https://julio899.github.io/2019
@@ -22,6 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
 foreach ( glob( plugin_dir_path( __FILE__ ) . 'admin/*.php' ) as $file ) {
     include_once $file;
 }
+
 
 
 // Include the main J899 class.
