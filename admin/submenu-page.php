@@ -35,7 +35,9 @@ class Submenu_Page {
     	var_dump($_REQUEST);
     }
 
-    public function renderWoocomerce() {
-        echo 'Bienvenido a J899 V' .J899_VERSION. ' este es el render dentro de Woocomerce. '.J899_DIR ;
+    public function renderWoocomerce() {    	
+        	require_once( J899_DIR . 'class-procesos.php');
+    		$licencia = Procesos::detaill_lic();
+        	require_once( J899_DIR . 'views/component.php');
     }
 }
