@@ -13,7 +13,7 @@
 
 	</div>
 
-	<div class="wrap <?php if($licencia->confirm=="1"){ echo 'no_display'; } ?> updated woocommerce-message wc-connect">
+	<div class="wrap <?php if($licencia->confirm=="1"){ echo 'no_display'; } ?> bordeRed">
 		<p>
 			<strong>Lo sentimos pero debe activar el plugin</strong>
 			-
