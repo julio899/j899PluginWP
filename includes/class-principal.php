@@ -23,17 +23,15 @@ class Principal
 
     public function woocomerceExist()
     {
-	 	$wcExist = false;  	
-		$plugins_actives = get_option( 'active_plugins' );
-		
-		foreach ($plugins_actives as $key => $value)
-		{
-			if ( explode($value,'woocommerce')[0] == 'woocommerce' )
-			{
-				$wcExist = true;
-			}			
-		}
-		return $wcExist;		
+        $wcExist         = false;
+        $plugins_actives = get_option('active_plugins');
+
+        foreach ($plugins_actives as $key => $value) {
+            if (explode($value, 'woocommerce')[0] == 'woocommerce') {
+                $wcExist = true;
+            }
+        }
+        return $wcExist;
     }
 
     public function includes()
@@ -56,6 +54,7 @@ class Principal
     private function init_hooks()
     {
         /*
+
         register_activation_hook( WC_PLUGIN_FILE, array( 'WC_Install', 'install' ) );
         register_shutdown_function( array( $this, 'log_errors' ) );
 
@@ -69,18 +68,34 @@ class Principal
         add_action( 'switch_blog', array( $this, 'wpdb_table_fix' ), 0 );
          */
 
-        if( $this->woocomerceExist() )
-        {
-        	// # verifico si woocomerce esta instalado continuo con la instalacion
-        	add_action( 'init', array( $this, 'instalar' ) );       
+        if ($this->woocomerceExist()) {
+            // # verifico si woocomerce esta instalado continuo con la instalacion
+            add_action('init', array($this, 'instalar'));
+            add_action('after_setup_theme', array($this, 'captura_acciones'));
+
         }
 
     }
 
+    public function captura_acciones()
+    {
+    	// captura para procesar licencia
+        if (isset($_REQUEST['proccess_lic']) && isset($_REQUEST['lic'])) {
+            include_once 'class-procesos.php';
+
+            header('Content-Type: application/json');
+            header('Access-Control-Allow-Origin: *');
+            echo json_encode(
+                Procesos::confirmacion_lic($_REQUEST)
+                , true);
+            exit;
+        }
+    }
+
     public function instalar()
     {
-    	include_once 'class-instalacion.php';
-    	new Instalacion();
+        include_once 'class-instalacion.php';
+        new Instalacion();
         define('J899_LIC', Instalacion::lic());
     }
 
@@ -104,10 +119,10 @@ class Principal
     private function define_constants()
     {
         $upload_dir = wp_upload_dir(null, false);
-        define( 'J899_DIR', dirname(__FILE__).'/' );
+        define('J899_DIR', dirname(__FILE__) . '/');
         define('J899_LOG_DIR', $upload_dir['basedir'] . '/wc-logs/');
         define('J899_VERSION', $this->version);
-        define('J899_WC',$this->woocomerceExist());
+        define('J899_WC', $this->woocomerceExist());
     }
 
     public static function instance()

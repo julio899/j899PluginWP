@@ -52,7 +52,7 @@ class Submenu {
             'manage_options',
             'custom-admin-page',
             array( $this->submenu_page, 'render' )
-        );
+        );        
         add_submenu_page( 
         	'woocommerce',
         	'J899',

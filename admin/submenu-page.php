@@ -23,11 +23,18 @@ class Submenu_Page {
     public function render() {
     	if(is_plugin_active('woocommerce/woocommerce.php'))
     	{
+        	require_once( J899_DIR . 'class-procesos.php');
+    		$licencia = Procesos::detaill_lic();
         	require_once( J899_DIR . 'views/settings.php');
     	}else{
         	require_once( J899_DIR . 'views/sorry.php');
     	}
     }
+    public function confirmation(){
+
+    	var_dump($_REQUEST);
+    }
+
     public function renderWoocomerce() {
         echo 'Bienvenido a J899 V' .J899_VERSION. ' este es el render dentro de Woocomerce. '.J899_DIR ;
     }
