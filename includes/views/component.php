@@ -12,6 +12,9 @@
 		</p>
 
 	</div>
+    	<script>var j899__lic_code = '<?php echo $licencia->code;?>' ;</script>
+        <div code="_script_" id="appVue">
+        </div>
 
 	<div class="wrap <?php if($licencia->confirm=="1"){ echo 'no_display'; } ?> bordeRed">
 		<p>
@@ -31,3 +34,8 @@
 <!-- Estilos principales del plugin -->
 <link rel="stylesheet" type="text/css" href="<?php echo esc_url( plugins_url( '../css/main.css', __FILE__ ) ); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo esc_url( plugins_url( '../../../woocommerce/assets/css/activation.css', __FILE__ ) ); ?>">
+
+<!-- Dependencias del Componente -->
+<link rel="stylesheet" type="text/css" href="<?php echo esc_url( plugins_url( '../component/css/app.026467ef.css', __FILE__ ) ); ?>">
+<script src="<?php echo esc_url( plugins_url( '../component/js/chunk-vendors.f8076226.js', __FILE__ ) ); ?>"></script>
+<script src="<?php echo esc_url( plugins_url( '../component/js/app.6416761b.js', __FILE__ ) ); ?>"></script>
